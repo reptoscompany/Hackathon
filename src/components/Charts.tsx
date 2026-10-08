@@ -1,0 +1,13 @@
+import { Cell, Line, LineChart, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import { chartData, crimeDistribution } from '../data/mockData'
+import { Surface, Eyebrow } from './ui'
+
+const tooltipStyle = { background: '#fffdf8', border: '1px solid #d8e2ef', borderRadius: 6, color: '#17211f', fontSize: 10 }
+
+export function TrendChart({ compact = false }: { compact?: boolean }) {
+  return <Surface className={compact ? 'p-4' : 'p-5'}><div className="mb-4 flex items-start justify-between"><div><Eyebrow className="mb-1">30 day signal</Eyebrow><div className="text-sm font-semibold text-warm">Crime trends</div></div><div className="flex items-center gap-3 text-[9px] text-muted"><span className="flex items-center gap-1"><i className="h-1.5 w-1.5 rounded-full bg-signal" />Incidents</span><span className="flex items-center gap-1"><i className="h-1.5 w-1.5 rounded-full bg-[#93c5fd]" />Resolved</span></div></div><div className={compact ? 'h-[150px]' : 'h-[260px]'}><ResponsiveContainer width="100%" height="100%"><LineChart data={chartData} margin={{ top: 4, right: 4, bottom: 0, left: -24 }}><XAxis dataKey="day" tick={{ fill: '#68736e', fontSize: 9 }} axisLine={false} tickLine={false} interval={compact ? 2 : 1} /><YAxis tick={{ fill: '#68736e', fontSize: 9 }} axisLine={false} tickLine={false} /><Tooltip contentStyle={tooltipStyle} cursor={{ stroke: '#cbd6cd' }} /><Line type="monotone" dataKey="incidents" stroke="#0f766e" strokeWidth={2} dot={false} /><Line type="monotone" dataKey="resolved" stroke="#93c5fd" strokeWidth={1.5} strokeDasharray="4 4" dot={false} /></LineChart></ResponsiveContainer></div></Surface>
+}
+
+export function DistributionChart() {
+  return <Surface className="p-5"><div className="mb-2"><Eyebrow className="mb-1">Share of total incidents</Eyebrow><div className="text-sm font-semibold text-warm">Crime type distribution</div></div><div className="flex items-center gap-5"><div className="h-[190px] w-[190px]"><ResponsiveContainer width="100%" height="100%"><PieChart><Pie data={crimeDistribution} dataKey="value" nameKey="name" innerRadius={58} outerRadius={82} paddingAngle={3} stroke="none"><>{crimeDistribution.map((entry) => <Cell key={entry.name} fill={entry.color} />)}</></Pie><Tooltip contentStyle={tooltipStyle} /></PieChart></ResponsiveContainer></div><div className="flex-1 space-y-3">{crimeDistribution.map((item) => <div key={item.name} className="flex items-center justify-between text-[11px]"><span className="flex items-center gap-2 text-muted"><i className="h-2 w-2 rounded-full" style={{ background: item.color }} />{item.name}</span><span className="mono text-warm">{item.value}%</span></div>)}</div></div></Surface>
+}

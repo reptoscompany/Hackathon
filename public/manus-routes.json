@@ -1,0 +1,14 @@
+{
+  "routes": [
+    { "path": "/", "title": "CRIMEMAP AI" },
+    { "path": "/dashboard", "title": "Dashboard" },
+    { "path": "/crime-map", "title": "Crime Map" },
+    { "path": "/ai-assistant", "title": "AI Assistant" },
+    { "path": "/analytics", "title": "Analytics" },
+    { "path": "/prediction", "title": "Prediction" },
+    { "path": "/patrol-planning", "title": "Patrol Planning" },
+    { "path": "/incidents", "title": "Incidents" },
+    { "path": "/reports", "title": "Reports" },
+    { "path": "/settings", "title": "Settings" }
+  ]
+}

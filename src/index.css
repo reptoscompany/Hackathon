@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Source Serif 4', Georgia, serif;
+  color: #17211f;
+  background: #f5f1e8;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --ink: #f5f1e8;
+  --surface: #fbf9f4;
+  --panel: #eef0e8;
+  --card: #fffdf8;
+  --rail: #18352f;
+  --signal: #0f766e;
+  --warm: #17211f;
+  --muted: #68736e;
+  --border: #d7ded6;
+}
+
+h1, h2, h3, .display-font {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--ink); }
+body { margin: 0; min-width: 320px; min-height: 100vh; background: var(--ink); }
+body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .36; background-image: linear-gradient(rgba(15,118,110,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(15,118,110,.045) 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(to bottom, black, transparent 72%); }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+::selection { background: rgba(15, 118, 110, 0.18); color: #17211f; }
+
+@layer components {
+  .mono { font-family: 'Geist Mono', ui-monospace, monospace; }
+  .eyebrow { color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+  .surface { border: 1px solid var(--border); background: var(--card); box-shadow: 0 14px 30px rgba(39,69,60,.08); }
+  .hairline { border-color: rgba(215,222,214,.9); }
+  .grid-texture { background-image: linear-gradient(rgba(15,118,110,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(15,118,110,.045) 1px, transparent 1px); background-size: 32px 32px; }
+  .signal-dot { width: 6px; height: 6px; border-radius: 999px; background: var(--signal); }
+  .ops-rule { border-top: 1px solid var(--border); }
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #ebe8dd; }
+::-webkit-scrollbar-thumb { background: #b9c6bd; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #8ea197; }
+
+.maplibregl-map { font-family: 'Geist Mono', ui-monospace, monospace; }
+.maplibregl-ctrl-group { background: #fffdf8 !important; border: 1px solid #cbd6cd !important; box-shadow: 0 4px 12px rgba(39,69,60,.1) !important; }
+.maplibregl-ctrl-group button { filter: sepia(.18) saturate(.8); }

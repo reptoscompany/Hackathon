@@ -1,0 +1,13 @@
+﻿node_modules/
+dist/
+.manus/
+.env
+.env.*
+!.env.example
+backend/*.db
+backend/*.sqlite
+backend/*.sqlite3
+backend/**/__pycache__/
+*.pyc
+*.log
+.DS_Store
